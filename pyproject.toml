@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "ccflow"
-version = "0.1.0"
+version = "0.1.1"
 description = ""
 authors = ["Roger Hurwitz <rogerhurwitz@inspirsmith.com>"]
 readme = "README.md"
@@ -10,6 +10,10 @@ packages = [{include = "ccflow", from = "src"}]
 python = "^3.11"
 requests = "^2.31.0"
 
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^7.4.0"
+python-dotenv = "^1.0.0"
 
 [build-system]
 requires = ["poetry-core"]

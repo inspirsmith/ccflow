@@ -1,8 +1,11 @@
 """A module for OAuth2 token handling."""
 import datetime
+import logging
 from typing import Final, TypedDict
 
 import requests
+
+logger = logging.getLogger(__name__)
 
 LATENCY_GUARD_SECONDS: Final = 60.0
 
@@ -17,7 +20,7 @@ class TokenDict(TypedDict):
     token_type: str
 
 
-class OAuth2Bud(requests.auth.AuthBase):  # type: ignore
+class CCFlowAuth(requests.auth.AuthBase):  # type: ignore
     """Encapsulates OAuth2 protocol handling using requests authorization class hierarchy.
 
     The OAuth2Handler manages all aspects of OAuth2 authentication as part of a requests based
@@ -51,11 +54,10 @@ class OAuth2Bud(requests.auth.AuthBase):  # type: ignore
         token_response = requests.post(self.token_endpoint, data=data, allow_redirects=False)
         token_response.raise_for_status()
         token: TokenDict = token_response.json()
-        # Combining current time and token duration enables creation of an "expires at" field
+        # Current time and token duration enables creation of an "expires at" field
         token["expires_at"] = datetime.datetime.now() + datetime.timedelta(
             seconds=float(token["expires_in"]) - LATENCY_GUARD_SECONDS
         )
-
         return token
 
     def __call__(self, prepared_request: requests.PreparedRequest) -> requests.PreparedRequest:
