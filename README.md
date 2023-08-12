@@ -1,9 +1,9 @@
-# authbud - A Python OAuth2 client credential workflow buddy for `requests`
+# ccflow - A Python OAuth2 client credential workflow handler for `requests`
 
 ![Version](https://img.shields.io/badge/version-0.1.0-blue.svg)
 ![License](https://img.shields.io/badge/license-MIT-green.svg)
 
-Planning to use `requests` for making web API calls and looking for an easy way to handle OAuth2's client credential workflow? `authdbud` fits the bill by embracing the `requests` native model for [adding new forms of authentication](https://requests.readthedocs.io/en/latest/user/authentication/#new-forms-of-authentication) thereby making `authbud` one of the most seamless OAuth2 client credential workflow options out there.
+Planning to use `requests` for making web API calls and looking for an easy way to handle OAuth2's client credential workflow? `ccflow` fits the bill by embracing the `requests` native model for [adding new forms of authentication](https://requests.readthedocs.io/en/latest/user/authentication/#new-forms-of-authentication) thereby making `ccflow` one of the most seamless OAuth2 client credential workflow options out there.
 
 
 <div style="text-align: center;">
